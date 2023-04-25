@@ -24,13 +24,12 @@ class ProductFactory extends Factory
         return [
             "name" => fake()->name(),
             "description" => fake()->sentence(10),
-            "price" => fake()->randomFloat(2),
+            "price" => fake()->randomFloat(2, 0, 100),
             "image" => fake()->imageUrl(200, 200),
             "published" => fake()->randomElement(['publié', "non publié"]),
             "state" => fake()->randomElement(['solde', "standard"]),
-            "reference" => fake()->word(),
+            "reference" => fake()->unique()->text(16),
             "categories_id" => Category::all()->random()->id
         ];
     }
 }
-    
