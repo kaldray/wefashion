@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('sizes', function (Blueprint $table) {
             $table->timestamps();
-            $table->foreignId("product_id")->constrained();
+            $table->foreignId("product_id")->constrained()->onDelete("cascade")->onUpdate("cascade");
             $table->enum("sizes", ["XS", "S", "M", "L", "XL"]);
             $table->primary(['product_id', "sizes"]);
             $table->unsignedMediumInteger("quantity");

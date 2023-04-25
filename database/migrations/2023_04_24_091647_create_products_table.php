@@ -20,7 +20,7 @@ return new class extends Migration
             $table->string("image")->nullable(false);;
             $table->enum("published", ["publié", "non publié"])->nullable(false);;
             $table->enum("state", ["solde", "standard"])->nullable(false);;
-            $table->string("reference", 16)->nullable(false)->unique();;
+            $table->string("reference", 16)->nullable(false)->unique();
 
             $table->foreignId("categories_id")->nullable(false)->constrained()->onUpdate("cascade")->onDelete("cascade");
         });
