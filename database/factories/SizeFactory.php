@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\SizeModel;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -9,6 +10,10 @@ use Illuminate\Database\Eloquent\Factories\Factory;
  */
 class SizeFactory extends Factory
 {
+
+
+    protected $model = SizeModel::class;
+
     /**
      * Define the model's default state.
      *
