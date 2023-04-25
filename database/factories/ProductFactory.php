@@ -2,7 +2,8 @@
 
 namespace Database\Factories;
 
-use App\Models\ProductModel;
+use App\Models\Category;
+use App\Models\Product;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -11,7 +12,7 @@ use Illuminate\Database\Eloquent\Factories\Factory;
 class ProductFactory extends Factory
 {
 
-    protected $model = ProductModel::class;
+    protected $model = Product::class;
 
     /**
      * Define the model's default state.
@@ -28,6 +29,8 @@ class ProductFactory extends Factory
             "published" => fake()->randomElement(['publié', "non publié"]),
             "state" => fake()->randomElement(['solde', "standard"]),
             "reference" => fake()->word(),
+            "categories_id" => Category::all()->random()->id
         ];
     }
 }
+    
