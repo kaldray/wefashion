@@ -7,10 +7,10 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Database\Factories\SizeFactory;
 
-class SizeModel extends Model
+class Size extends Model
 {
     use HasFactory;
-    protected static function newFactory(): SizeFactory
+    protected static function newFactory(): Factory
     {
         return SizeFactory::new();
     }

@@ -5,13 +5,13 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\Factory;
-use Database\Factories\CategoryFactory;
+use Database\Factories\ProductFactory;
 
-class CategoryModel extends Model
+class Product extends Model
 {
     use HasFactory;
     protected static function newFactory(): Factory
     {
-        return CategoryFactory::new();
+        return ProductFactory::new();
     }
 }

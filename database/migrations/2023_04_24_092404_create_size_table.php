@@ -11,7 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('size', function (Blueprint $table) {
+        Schema::create('sizes', function (Blueprint $table) {
             $table->timestamps();
             $table->foreignId("product_id")->constrained();
             $table->enum("sizes", ["XS,S,M,L,XL"]);
@@ -24,6 +24,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('size');
+        Schema::dropIfExists('sizes');
     }
 };
