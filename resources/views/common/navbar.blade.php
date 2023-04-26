@@ -14,8 +14,8 @@
       class="nav-menu group-[]: hidden basis-full flex-col items-center justify-center gap-5 text-white sm:block sm:basis-auto"
     >
       <a href="">Soldes</a>
-      <a href="">Homme</a>
-      <a href="">Femme</a>
+      <a href="{{route('show','homme')}}">Homme</a>
+      <a href="{{route('show','femme')}}">Femme</a>
     </div>
   </section>
 </nav>

@@ -11,19 +11,19 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Product extends Model
 {
-    use HasFactory;
-    protected static function newFactory(): Factory
-    {
-        return ProductFactory::new();
-    }
+  use HasFactory;
+  protected static function newFactory(): Factory
+  {
+    return ProductFactory::new();
+  }
 
-    public function categories(): BelongsTo
-    {
-        return $this->belongsTo(Category::class);
-    }
+  public function categories(): BelongsTo
+  {
+    return $this->belongsTo(Categories::class);
+  }
 
-    public function sizes(): HasMany
-    {
-        return $this->hasMany(Size::class);
-    }
+  public function sizes(): HasMany
+  {
+    return $this->hasMany(Size::class);
+  }
 }

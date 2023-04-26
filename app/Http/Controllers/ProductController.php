@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Categories;
 use App\Models\Product;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\Request;
@@ -16,7 +17,7 @@ class ProductController extends Controller
     /**
      * Sent the Product per group
      */
-    $products = Product::paginate(6);
+    $products = Product::simplePaginate(6);
     return view("pages.home", ["products" => $products]);
   }
 
@@ -41,7 +42,13 @@ class ProductController extends Controller
    */
   public function show(string $id)
   {
-    //
+    $categoryId = Categories::where("name", $id)->first(["id"]);
+
+    $products = Product::query()
+      ->where("categories_id", "=", $categoryId->id)
+      ->simplePaginate(6);
+
+    return view("pages.categories", ["products" => $products]);
   }
 
   /**
