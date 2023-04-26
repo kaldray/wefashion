@@ -15,4 +15,7 @@
   </div>
   @endforeach
 </div>
+<div class="mt-10 flex justify-center">
+  <p>Il y a {{$number}} produits au total.</p>
+</div>
 @include("components.pagination") @endsection

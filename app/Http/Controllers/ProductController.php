@@ -18,7 +18,11 @@ class ProductController extends Controller
      * Sent the Product per group
      */
     $products = Product::simplePaginate(6);
-    return view("pages.home", ["products" => $products]);
+    /**
+     * Get selection lenght
+     */
+    $number = Product::count();
+    return view("pages.home", ["products" => $products, "number" => $number]);
   }
 
   /**
@@ -48,7 +52,17 @@ class ProductController extends Controller
       ->where("categories_id", "=", $categoryId->id)
       ->simplePaginate(6);
 
-    return view("pages.categories", ["products" => $products]);
+    /**
+     * Get selection lenght
+     */
+    $number = Product::query()
+      ->where("categories_id", "=", $categoryId->id)
+      ->count();
+
+    return view("pages.categories", [
+      "products" => $products,
+      "number" => $number,
+    ]);
   }
 
   /**

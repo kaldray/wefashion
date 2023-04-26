@@ -14,7 +14,11 @@ class SoldeController extends Controller
   public function index(): View
   {
     $products = Product::where("state", "solde")->paginate(6);
-    return view("pages.solde", ["products" => $products]);
+    /**
+     * Get selection lenght
+     */
+    $number = Product::where("state", "solde")->count();
+    return view("pages.solde", ["products" => $products, "number" => $number]);
   }
 
   /**
