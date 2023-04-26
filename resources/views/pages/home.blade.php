@@ -10,4 +10,4 @@
   </div>
   @endforeach
 </div>
-@endsection
+@include("components.pagination") @endsection
