@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\SoldeController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,4 +15,6 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::resource("/", ProductController::class)->parameters(["" => "product"]);
+Route::resource("/solde", SoldeController::class);
+Route::get("/", [ProductController::class, "index"])->name("home");
+Route::get("/{id}", [ProductController::class, "show"])->name("home.category");
