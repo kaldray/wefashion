@@ -11,11 +11,12 @@
       <div class="h-0.5 w-8 bg-white"></div>
     </div>
     <div
-      class="nav-menu group-[]: hidden basis-full flex-col items-center justify-center gap-5 text-white sm:block sm:basis-auto"
+      class="nav-menu group-[]: hidden basis-full flex-col items-center justify-center gap-5 text-white sm:flex sm:basis-auto sm:flex-row"
     >
       <a href="{{route('solde.index')}}">Soldes</a>
       <a href="{{route('home.category','homme')}}">Homme</a>
       <a href="{{route('home.category','femme')}}">Femme</a>
+      <a href="{{route('home.category','femme')}}">Se connecter</a>
     </div>
   </section>
 </nav>
