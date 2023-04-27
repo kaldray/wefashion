@@ -9,8 +9,8 @@
   </head>
 
   <body>
-    @include("common.navbar")
-    <main class="pt-16">@yield("main")</main>
+    <header>@include("common.navbar")</header>
+    <main>@yield("main")</main>
     @include("common.footer")
   </body>
 </html>
