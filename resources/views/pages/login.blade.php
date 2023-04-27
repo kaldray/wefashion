@@ -1,5 +1,5 @@
 @extends("base") @section("main")
-<div class="mx-auto mt-10 flex w-4/5 flex-col justify-center">
+<div class="mx-auto py-10  flex w-4/5 flex-col justify-center">
   <div class="my-5">
     <h1 class="text-center">Se connecter</h1>
   </div>

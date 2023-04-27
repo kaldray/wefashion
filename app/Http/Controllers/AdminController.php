@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Product;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\Request;
 
@@ -12,7 +13,8 @@ class AdminController extends Controller
    */
   public function index(): View
   {
-    return view("admin.products");
+    $products = Product::simplePaginate(15);
+    return view("admin.products", ["products" => $products]);
   }
 
   /**
@@ -42,9 +44,9 @@ class AdminController extends Controller
   /**
    * Show the form for editing the specified resource.
    */
-  public function edit(string $id)
+  public function edit(Product $product)
   {
-    //
+    
   }
 
   /**

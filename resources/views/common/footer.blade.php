@@ -1,4 +1,4 @@
-<footer class="fixed bottom-0 w-full bg-slate-300">
+<footer class="mt-10 w-full bg-slate-300">
   <section
     class="flex flex-col items-center justify-center gap-10 p-3 sm:flex-row"
   >

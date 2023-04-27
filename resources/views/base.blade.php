@@ -10,7 +10,7 @@
 
   <body>
     <header>@include("common.navbar")</header>
-    <main>@yield("main")</main>
+    <main class="pt-14">@yield("main")</main>
     @include("common.footer")
   </body>
 </html>

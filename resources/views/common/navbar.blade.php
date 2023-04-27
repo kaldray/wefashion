@@ -1,4 +1,4 @@
-<nav class="mb-5 w-full bg-black">
+<nav class="fixed top-0 mb-5 w-full bg-black">
   <section
     class="mx-auto flex max-w-2xl flex-row flex-wrap justify-between gap-5 p-5"
   >
