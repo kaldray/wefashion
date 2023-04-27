@@ -16,7 +16,16 @@ class Product extends Model
    *
    * @var array
    */
-  protected $fillable = ["name"];
+  protected $fillable = [
+    "name",
+    "description",
+    "price",
+    "image",
+    "published",
+    "state",
+    "reference",
+    "categories_id",
+  ];
 
   use HasFactory;
   protected static function newFactory(): Factory
