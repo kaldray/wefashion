@@ -23,7 +23,7 @@
       <a href="{{route('home.category','femme')}}">Femme</a>
       <a href="{{route('login.index')}}">Se connecter</a>
       @endguest @auth()
-      <a href="{{route('solde.index')}}">Produits</a>
+      <a href="{{route('admin.index')}}">Produits</a>
       <a href="{{route('home.category','homme')}}">Catégories</a>
       <a href="{{route('auth.logout')}}">Déconnexion</a>
       @endauth
