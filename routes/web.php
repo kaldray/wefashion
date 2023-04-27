@@ -21,8 +21,10 @@ use Illuminate\Support\Facades\Route;
 Route::resource("/solde", SoldeController::class);
 Route::resource("/login", LoginController::class);
 Route::resource("/admin", AdminController::class)->middleware("auth");
-Route::get("/", [ProductController::class, "index"])->name("home");
-Route::get("/{id}", [ProductController::class, "show"])->name("home.category");
+Route::controller(ProductController::class)->group(function () {
+  Route::get("/", "index")->name("home");
+  Route::get("/{id}", "show")->name("home.category");
+});
 Route::get("/products/{id}", [UniqueProductController::class, "show"])->name(
   "home.product"
 );
