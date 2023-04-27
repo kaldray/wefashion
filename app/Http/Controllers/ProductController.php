@@ -48,9 +48,11 @@ class ProductController extends Controller
   {
     $categoryId = Categories::where("name", $id)->first(["id"]);
 
-    $products = Product::query()
-      ->where("categories_id", "=", $categoryId->id)
-      ->simplePaginate(6);
+    $products = Product::where(
+      "categories_id",
+      "=",
+      $categoryId->id
+    )->simplePaginate(6);
 
     /**
      * Get selection lenght

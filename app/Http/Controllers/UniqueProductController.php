@@ -12,7 +12,7 @@ class UniqueProductController extends Controller
   {
     $product = Product::find($id);
 
-    $sizes = Size::all()->where("product_id", $id);
+    $sizes = Size::where("product_id", $id)->get();
     return view("pages.product", [
       "product" => $product,
       "sizes" => $sizes[0],
