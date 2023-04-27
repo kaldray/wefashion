@@ -16,7 +16,7 @@
       <a href="{{route('solde.index')}}">Soldes</a>
       <a href="{{route('home.category','homme')}}">Homme</a>
       <a href="{{route('home.category','femme')}}">Femme</a>
-      <a href="{{route('home.category','femme')}}">Se connecter</a>
+      <a href="{{route('login.index','femme')}}">Se connecter</a>
     </div>
   </section>
 </nav>
