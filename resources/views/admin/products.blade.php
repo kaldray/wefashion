@@ -50,7 +50,7 @@
                 >
                   <a
                     class="rounded-md bg-yellow-500 p-2"
-                    href="{{route('admin.edit',$p->id)}}"
+                    href="{{route('admin.edit',['product'=> $p->id])}}"
                     >Modifier</a
                   >
                 </td>

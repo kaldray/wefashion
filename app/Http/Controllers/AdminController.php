@@ -44,9 +44,9 @@ class AdminController extends Controller
   /**
    * Show the form for editing the specified resource.
    */
-  public function edit(Product $product)
+  public function edit(Product $product): View
   {
-    
+    return view("admin.edit", ["product" => $product]);
   }
 
   /**
