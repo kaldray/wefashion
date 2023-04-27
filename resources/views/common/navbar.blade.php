@@ -21,6 +21,7 @@
       @endguest @auth()
       <a href="{{route('solde.index')}}">Produits</a>
       <a href="{{route('home.category','homme')}}">Catégories</a>
+      <a href="{{route('auth.logout')}}">Déconnexion</a>
       @endauth
     </div>
   </section>

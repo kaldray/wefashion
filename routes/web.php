@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\LogOutController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\SoldeController;
 use App\Http\Controllers\UniqueProductController;
@@ -21,6 +22,7 @@ use Illuminate\Support\Facades\Route;
 Route::resource("/solde", SoldeController::class);
 Route::resource("/login", LoginController::class);
 Route::resource("/admin", AdminController::class)->middleware("auth");
+Route::get("/logout", [LogOutController::class, "index"])->name("auth.logout");
 Route::controller(ProductController::class)->group(function () {
   Route::get("/", "index")->name("home");
   Route::get("/{id}", "show")->name("home.category");
