@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\ProductsRequest;
 use App\Models\Categories;
 use App\Models\Product;
 use Illuminate\Contracts\View\View;
@@ -61,9 +62,12 @@ class AdminController extends Controller
   /**
    * Update the specified resource in storage.
    */
-  public function update(Request $request, string $id)
+  public function update(Product $product, ProductsRequest $request)
   {
-    //
+    $product->update($request->validated());
+    return redirect()
+      ->route("admin.edit", ["product" => $product->id])
+      ->with("succes", "L'article a éte modifié avec succès");
   }
 
   /**

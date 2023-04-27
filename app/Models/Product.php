@@ -11,6 +11,13 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Product extends Model
 {
+  /**
+   * The attributes that are mass assignable.
+   *
+   * @var array
+   */
+  protected $fillable = ["name"];
+
   use HasFactory;
   protected static function newFactory(): Factory
   {
@@ -26,5 +33,4 @@ class Product extends Model
   {
     return $this->hasMany(Size::class);
   }
-  
 }
