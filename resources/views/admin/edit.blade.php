@@ -60,23 +60,28 @@
         <div class="mb-5 text-center">
           <label for="published">Status</label>
         </div>
-        <input
-          class="w-full border border-gray-950 p-2"
-          type="text"
-          name="published"
-          value="{{old('published',$product->published)}}"
-        />
+        <select class="w-full border border-gray-950 p-2" name="state">
+          <option value="{{old('published',$product->published)}}">
+            {{old('published',$product->published)}}
+          </option>
+          @foreach ($published as $p ) @if ($p === $product->published)
+          @continue @endif
+          <option value="{{$p}}">{{$p}}</option>
+          @endforeach
+        </select>
       </div>
       <div class="flex-shrink-0 flex-grow">
         <div class="mb-5 text-center">
           <label for="state">Etat</label>
         </div>
-        <input
-          class="w-full border border-gray-950 p-2"
-          type="text"
-          name="state"
-          value="{{old('state',$product->state)}}"
-        />
+        <select class="w-full border border-gray-950 p-2" name="state">
+          <option value="{{old('state',$product->state)}}">
+            {{old('state',$product->state)}}
+          </option>
+          @foreach ($state as $s ) @if ($s === $product->state) @continue @endif
+          <option value="{{$s}}">{{$s}}</option>
+          @endforeach
+        </select>
       </div>
       <div class="flex-shrink-0 flex-grow">
         <div class="mb-5 text-center">
@@ -93,12 +98,15 @@
         <div class="mb-5 text-center">
           <label for="categories_id">Catégorie</label>
         </div>
-        <input
-          class="w-full border border-gray-950 p-2"
-          type="text"
-          name="categories_id"
-          value="{{old('categories_id',$product->categories->name)}}"
-        />
+        <select class="w-full border border-gray-950 p-2" name="" id="">
+          <option value="{{old('categories_id',$product->categories->id)}}">
+            {{old('categories_id',$product->categories->name)}}
+          </option>
+          @if ($categories) @foreach ($categories as $c ) @if ($c->name ===
+          $product->categories->name ) @continue @endif
+          <option value="{{$c->id}}">{{$c->name}}</option>
+          @endforeach @endif
+        </select>
       </div>
       <div class="text-center">
         <button class="w-20 rounded-md border border-gray-900 p-2">

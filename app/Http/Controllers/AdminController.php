@@ -2,12 +2,15 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Categories;
 use App\Models\Product;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\Request;
 
 class AdminController extends Controller
 {
+  protected $state = ["solde", "standard"];
+  protected $published = ["non publié", "publié"];
   /**
    * Display a listing of the resource.
    */
@@ -42,11 +45,17 @@ class AdminController extends Controller
   }
 
   /**
-   * Show the form for editing the specified resource.
+   * Show the form for editing a product.
    */
   public function edit(Product $product): View
   {
-    return view("admin.edit", ["product" => $product]);
+    $categories = Categories::all();
+    return view("admin.edit", [
+      "product" => $product,
+      "categories" => $categories,
+      "state" => $this->state,
+      "published" => $this->published,
+    ]);
   }
 
   /**
