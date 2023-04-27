@@ -6,6 +6,7 @@ use App\Http\Requests\ProductsRequest;
 use App\Models\Categories;
 use App\Models\Product;
 use Illuminate\Contracts\View\View;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 
 class AdminController extends Controller
@@ -73,8 +74,11 @@ class AdminController extends Controller
   /**
    * Remove the specified resource from storage.
    */
-  public function destroy(string $id)
+  public function destroy(Product $product): RedirectResponse
   {
-    //
+    $product->delete();
+    return redirect()
+      ->route("admin.index")
+      ->with("succes", "L'article a éte supprimé avec succès");
   }
 }

@@ -1,6 +1,11 @@
 @extends("base") @section("main")
 
 <div class="mx-auto w-5/6 max-w-screen-xl">
+  <div class="pt-5 text-center">
+    @if (session("succes"))
+    <p class="bg-logo p-2 text-white">{{ session("succes") }}</p>
+    @endif
+  </div>
   <div class="mb-10 mt-10 flex flex-col pb-10">
     <div class="overflow-x-auto sm:-mx-6 lg:-mx-8">
       <div class="inline-block min-w-full py-2 sm:px-6 lg:px-8">
@@ -57,7 +62,15 @@
                 <td
                   class="whitespace-nowrap border border-slate-600 px-6 py-4 font-medium"
                 >
-                  <a class="rounded-md bg-red-500 p-2" href="">Supprimer</a>
+                  <form
+                    method="post"
+                    action="{{route('admin.destroy',['product'=> $p])}}"
+                  >
+                    @csrf @method("DELETE")
+                    <button type="submit" class="rounded-md bg-red-500 p-2">
+                      Supprimer
+                    </button>
+                  </form>
                 </td>
               </tr>
               @endforeach @endif
