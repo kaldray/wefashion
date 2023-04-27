@@ -2,19 +2,17 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\LoginRequest;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 
-class LoginController extends Controller
+class AdminController extends Controller
 {
   /**
    * Display a listing of the resource.
    */
   public function index(): View
   {
-    return view("pages.login");
+    return view("admin.products");
   }
 
   /**
@@ -28,14 +26,9 @@ class LoginController extends Controller
   /**
    * Store a newly created resource in storage.
    */
-  public function store(LoginRequest $request)
+  public function store(Request $request)
   {
-    $credentials = $request->validated();
-    if (Auth::attempt($credentials)) {
-      $request->session()->regenerate();
-      return redirect()->intended(route("admin.index"));
-    }
-    return to_route("login.index");
+    //
   }
 
   /**

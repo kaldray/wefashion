@@ -3,16 +3,23 @@
   <div class="my-5">
     <h1 class="text-center">Se connecter</h1>
   </div>
-  <form class="flex flex-wrap gap-5" action="">
+  <form
+    class="flex flex-wrap gap-5"
+    action="{{route('login.store')}}"
+    method="post"
+  >
     @csrf
     <input
       class="flex-shrink-0 flex-grow basis-40 border border-gray-950"
       type="mail"
+      name="email"
       placeholder="exemple@exemple.com"
+      value="{{ old('email') }}"
     />
     <input
       class="flex-shrink-0 flex-grow basis-40 border border-gray-950"
       type="password"
+      name="password"
       placeholder="admin"
     />
     <button

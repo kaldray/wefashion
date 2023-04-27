@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AdminController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\SoldeController;
@@ -19,6 +20,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::resource("/solde", SoldeController::class);
 Route::resource("/login", LoginController::class);
+Route::resource("/admin", AdminController::class)->middleware("auth");
 Route::get("/", [ProductController::class, "index"])->name("home");
 Route::get("/{id}", [ProductController::class, "show"])->name("home.category");
 Route::get("/products/{id}", [UniqueProductController::class, "show"])->name(
