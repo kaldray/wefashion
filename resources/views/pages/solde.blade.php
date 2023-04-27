@@ -4,7 +4,7 @@
 >
   @foreach ($products as $p )
   <div class="col-span-12 sm:col-span-4">
-    <a href="">
+    <a href="{{ route('home.product', $p->id ) }}">
       <img
         class="w-full"
         loading="lazy"
