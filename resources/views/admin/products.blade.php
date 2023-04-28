@@ -1,7 +1,7 @@
 @extends("base") @section("main")
 
 <div class="mx-auto mt-10 w-5/6 max-w-screen-xl">
-  <div class="pt-5 text-center">
+  <div class="mx-auto w-2/4 pt-5 text-center">
     @if (session("succes"))
     <p class="bg-logo p-2 text-white">{{ session("succes") }}</p>
     @endif
