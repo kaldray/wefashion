@@ -24,6 +24,9 @@
       @endguest @auth()
       <a href="{{route('admin.index')}}">Produits</a>
       <a href="{{route('categories.index')}}">Catégories</a>
+      @if ( Route::is('admin.*') || Route::is('categories.*') )
+      <a href="{{route('home')}}">Client</a>
+      @endif
       <a href="{{route('auth.logout')}}">Déconnexion</a>
       @endauth
     </div>
