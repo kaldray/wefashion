@@ -70,8 +70,11 @@ class CategoriesController extends Controller
   /**
    * Remove the specified resource from storage.
    */
-  public function destroy(string $id)
+  public function destroy(Categories $category): RedirectResponse
   {
-    //
+    $category->delete();
+    return redirect()
+      ->route("categories.index")
+      ->with("succes", "La catégorie a éte supprimé avec succès");
   }
 }
