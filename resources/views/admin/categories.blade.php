@@ -9,7 +9,7 @@
   <div class="mt-3 text-left">
     <a
       class="rounded-md bg-black p-2 text-white"
-      href="{{route('admin.create')}}"
+      href="{{route('categories.create')}}"
       >Nouvelle Catégories</a
     >
   </div>

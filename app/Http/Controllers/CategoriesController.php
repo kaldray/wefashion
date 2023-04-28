@@ -22,7 +22,7 @@ class CategoriesController extends Controller
   /**
    * Show the form for creating a new resource.
    */
-  public function create()
+  public function create(): View
   {
     return view("admin.categories.create");
   }
@@ -30,9 +30,12 @@ class CategoriesController extends Controller
   /**
    * Store a newly created resource in storage.
    */
-  public function store(Request $request)
+  public function store(CategoriesRequest $request)
   {
-    //
+    Categories::create($request->validated());
+    return redirect()
+      ->route("categories.index")
+      ->with("succes", "La catégorie éte ajouter avec succès");
   }
 
   /**

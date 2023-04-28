@@ -4,6 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Validation\Rule;
 
 class CategoriesRequest extends FormRequest
 {
@@ -23,7 +24,7 @@ class CategoriesRequest extends FormRequest
   public function rules(): array
   {
     return [
-      "name" => ["required", "string"],
+      "name" => ["required", "string", "min:2", "unique:categories,name"],
     ];
   }
 }
