@@ -21,7 +21,6 @@
       <a href="{{route('solde.index')}}">Soldes</a>
       <a href="{{route('home.category','homme')}}">Homme</a>
       <a href="{{route('home.category','femme')}}">Femme</a>
-      <a href="{{route('login.index')}}">Se connecter</a>
       @endguest @auth()
       <a href="{{route('admin.index')}}">Produits</a>
       <a href="{{route('categories.index')}}">Catégories</a>
