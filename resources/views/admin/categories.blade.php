@@ -10,7 +10,7 @@
     <a
       class="rounded-md bg-black p-2 text-white"
       href="{{route('admin.create')}}"
-      >Nouveau Produit</a
+      >Nouvelle Catégories</a
     >
   </div>
   <div class="mb-10 mt-10 flex flex-col pb-10">
@@ -21,48 +21,31 @@
             <thead class="border-b font-medium dark:border-neutral-500">
               <tr>
                 <th class="border border-slate-600 p-4">Id</th>
-                <th class="border border-slate-600 p-4">Nom</th>
-                <th class="border border-slate-600 p-4">Catégorie</th>
-                <th class="border border-slate-600 p-4">Prix</th>
-                <th class="border border-slate-600 p-4">Etat</th>
+                <th class="border border-slate-600 p-4">Nom de la catégoris</th>
                 <th class="border border-slate-600 p-4">Editer</th>
                 <th class="border border-slate-600 p-4">Supprimer</th>
               </tr>
             </thead>
             <tbody>
-               @if ($products) @foreach ($products as $p )
+              @if ($categories) @foreach ($categories as $c )
               <tr class="border-b dark:border-neutral-500">
                 <td
                   class="whitespace-nowrap border border-slate-600 px-6 py-4 font-medium"
                 >
-                  {{ $p->id }}
+                  {{ $c->id }}
                 </td>
                 <td
                   class="whitespace-nowrap border border-slate-600 px-6 py-4 font-medium"
                 >
-                  {{ $p->name }}
+                  {{ $c->name }}
                 </td>
-                <td
-                  class="whitespace-nowrap border border-slate-600 px-6 py-4 font-medium"
-                >
-                  {{ $p->categories->name }}
-                </td>
-                <td
-                  class="whitespace-nowrap border border-slate-600 px-6 py-4 font-medium"
-                >
-                  {{ $p->price }}€
-                </td>
-                <td
-                  class="whitespace-nowrap border border-slate-600 px-6 py-4 font-medium"
-                >
-                  {{ $p->state }}
-                </td>
+
                 <td
                   class="whitespace-nowrap border border-slate-600 px-6 py-4 font-medium"
                 >
                   <a
                     class="rounded-md bg-yellow-500 p-2"
-                    href="{{route('admin.edit',['product'=> $p->id])}}"
+                    href="{{route('categories.edit',['category'=> $c->id])}}"
                     >Modifier</a
                   >
                 </td>
@@ -71,7 +54,7 @@
                 >
                   <form
                     method="post"
-                    action="{{route('admin.destroy',['product'=> $p])}}"
+                    action="{{route('categories.destroy',['category'=> $c])}}"
                   >
                     @csrf @method("DELETE")
                     <button type="submit" class="rounded-md bg-red-500 p-2">
@@ -88,6 +71,8 @@
     </div>
   </div>
 </div>
-<div>@include("components.pagination")</div>
+<section class="my-10 flex items-center justify-center">
+  {{ $categories->links() }}
+</section>
 @endsection
 

@@ -11,6 +11,7 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 class Categories extends Model
 {
   use HasFactory;
+  protected $fillable = ["name"];
   protected static function newFactory(): Factory
   {
     return CategoryFactory::new();

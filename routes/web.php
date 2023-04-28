@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\CategoriesController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\LogOutController;
 use App\Http\Controllers\ProductController;
@@ -24,6 +25,7 @@ Route::resource("/login", LoginController::class);
 Route::resource("/admin", AdminController::class)
   ->middleware("auth")
   ->parameters(["admin" => "product"]);
+Route::resource("/categories", CategoriesController::class)->middleware("auth");
 Route::get("/logout", [LogOutController::class, "index"])->name("auth.logout");
 Route::controller(ProductController::class)->group(function () {
   Route::get("/", "index")->name("home");

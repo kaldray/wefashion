@@ -24,7 +24,7 @@
       <a href="{{route('login.index')}}">Se connecter</a>
       @endguest @auth()
       <a href="{{route('admin.index')}}">Produits</a>
-      <a href="{{route('home.category','homme')}}">Catégories</a>
+      <a href="{{route('categories.index')}}">Catégories</a>
       <a href="{{route('auth.logout')}}">Déconnexion</a>
       @endauth
     </div>
