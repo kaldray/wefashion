@@ -25,6 +25,7 @@ class Product extends Model
     "state",
     "reference",
     "categories_id",
+    "sizes",
   ];
 
   use HasFactory;

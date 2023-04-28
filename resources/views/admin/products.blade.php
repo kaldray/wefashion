@@ -6,6 +6,13 @@
     <p class="bg-logo p-2 text-white">{{ session("succes") }}</p>
     @endif
   </div>
+  <div class="mt-3 text-left">
+    <a
+      class="rounded-md bg-black p-2 text-white"
+      href="{{route('admin.create')}}"
+      >Nouveau Produit</a
+    >
+  </div>
   <div class="mb-10 mt-10 flex flex-col pb-10">
     <div class="overflow-x-auto sm:-mx-6 lg:-mx-8">
       <div class="inline-block min-w-full py-2 sm:px-6 lg:px-8">

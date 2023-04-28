@@ -5,14 +5,15 @@ namespace App\Http\Controllers;
 use App\Http\Requests\ProductsRequest;
 use App\Models\Categories;
 use App\Models\Product;
+use App\Models\Size;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
-use Illuminate\Http\Request;
 
 class AdminController extends Controller
 {
   protected $state = ["solde", "standard"];
   protected $published = ["non publié", "publié"];
+  protected $sizes = ["XS", "S", "M", "L", "XL"];
   /**
    * Display a listing of the resource.
    */
@@ -25,17 +26,30 @@ class AdminController extends Controller
   /**
    * Show the form for creating a new resource.
    */
-  public function create()
+  public function create(): View
   {
-    //
+    $categories = Categories::all();
+    return view("admin.create", [
+      "state" => $this->state,
+      "published" => $this->published,
+      "categories" => $categories,
+      "sizes" => $this->sizes,
+    ]);
   }
 
   /**
    * Store a newly created resource in storage.
    */
-  public function store(Request $request)
+  public function store(ProductsRequest $request)
   {
-    //
+    $post = Product::create($request->except(["sizes"]));
+    $sizes = $request->safe()->only([$this->sizes, "sizes"])["sizes"];
+    foreach ($sizes as $s) {
+      $post->sizes($s)->saveMany([new Size(["sizes" => $s])]);
+    }
+    return redirect()
+      ->route("admin.index")
+      ->with("succes", "L'article a éte crée avec succès");
   }
 
   /**

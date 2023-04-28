@@ -10,14 +10,15 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class Size extends Model
 {
-    use HasFactory;
-    protected static function newFactory(): Factory
-    {
-        return SizeFactory::new();
-    }
+  use HasFactory;
+  protected $fillable = ["sizes"];
+  protected static function newFactory(): Factory
+  {
+    return SizeFactory::new();
+  }
 
-    public function products(): BelongsTo
-    {
-        return $this->belongsTo(Product::class);
-    }
+  public function products(): BelongsTo
+  {
+    return $this->belongsTo(Product::class);
+  }
 }

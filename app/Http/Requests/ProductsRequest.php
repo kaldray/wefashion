@@ -24,14 +24,45 @@ class ProductsRequest extends FormRequest
   public function rules(): array
   {
     return [
-      "name" => ["string", "min:5", "max:100"],
-      "description" => ["string"],
-      "price" => ["decimal:0,2"],
-      "image" => ["string"],
-      "published" => ["exists:products,published"],
-      "state" => ["exists:products,state"],
-      "reference" => ["alpha_num", "max:16", Rule::unique("products")],
-      "categories_id" => [Rule::exists("categories", "id")],
+      "name" => ["string", "min:5", "max:100", "required"],
+      "description" => ["string", "required"],
+      "price" => ["decimal:0,2", "required"],
+      "image" => ["string", "required"],
+      "published" => ["exists:products,published", "required"],
+      "state" => ["exists:products,state", "required"],
+      "reference" => [
+        "alpha_num",
+        "max:16",
+        Rule::unique("products"),
+        "required",
+      ],
+      "categories_id" => [Rule::exists("categories", "id"), "required"],
+      "sizes" => ["required", "array", "min:1"],
+      "sizes.XS" => [
+        Rule::unique("sizes", "product_id")->where(function ($query) {
+          $query->where("product_id", $this->request->get("product_id"));
+        }),
+      ],
+      "sizes.S" => [
+        Rule::unique("sizes", "product_id")->where(function ($query) {
+          $query->where("product_id", $this->request->get("product_id"));
+        }),
+      ],
+      "sizes.M" => [
+        Rule::unique("sizes", "product_id")->where(function ($query) {
+          $query->where("product_id", $this->request->get("product_id"));
+        }),
+      ],
+      "sizes.L" => [
+        Rule::unique("sizes", "product_id")->where(function ($query) {
+          $query->where("product_id", $this->request->get("product_id"));
+        }),
+      ],
+      "sizes.XL" => [
+        Rule::unique("sizes", "product_id")->where(function ($query) {
+          $query->where("product_id", $this->request->get("product_id"));
+        }),
+      ],
     ];
   }
 }
