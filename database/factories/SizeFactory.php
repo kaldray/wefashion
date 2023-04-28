@@ -22,7 +22,6 @@ class SizeFactory extends Factory
   {
     return [
       "sizes" => fake()->randomElement(["XS", "S", "M", "L", "XL"]),
-      "quantity" => fake()->randomDigit(),
       "product_id" => Product::factory(),
     ];
   }
