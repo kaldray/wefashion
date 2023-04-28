@@ -54,7 +54,7 @@
                 >
                   <form
                     method="post"
-                    id="delete"
+                    class="delete"
                     action="{{route('categories.destroy',['category'=> $c])}}"
                   >
                     @csrf @method("DELETE")

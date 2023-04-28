@@ -71,7 +71,7 @@
                 >
                   <form
                     method="post"
-                    id="delete"
+                    class="delete"
                     action="{{route('admin.destroy',['product'=> $p])}}"
                   >
                     @csrf @method("DELETE")
@@ -90,12 +90,5 @@
   </div>
 </div>
 <div>@include("components.pagination")</div>
-<dialog id="dialog">
-  <div><p>Voulez vraiment supprimer cet élément ?</p></div>
-  <div class="flex flex-row gap-10">
-    <button id="no" class="rounded-md border border-black p-2">Non</button>
-    <button id="yes" class="rounded-md bg-red-500 p-2">Oui</button>
-  </div>
-</dialog>
 @endsection
 
