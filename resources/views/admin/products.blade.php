@@ -1,6 +1,6 @@
 @extends("base") @section("main")
 
-<div class="mx-auto w-5/6 max-w-screen-xl">
+<div class="mx-auto mt-10 w-5/6 max-w-screen-xl">
   <div class="pt-5 text-center">
     @if (session("succes"))
     <p class="bg-logo p-2 text-white">{{ session("succes") }}</p>
@@ -30,7 +30,7 @@
               </tr>
             </thead>
             <tbody>
-               @if ($products) @foreach ($products as $p )
+              @if ($products) @foreach ($products as $p )
               <tr class="border-b dark:border-neutral-500">
                 <td
                   class="whitespace-nowrap border border-slate-600 px-6 py-4 font-medium"

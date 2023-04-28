@@ -1,6 +1,6 @@
 @extends("base") @section("main")
 
-<div class="mx-auto w-5/6 max-w-screen-xl">
+<div class="mx-auto mt-10 w-5/6 max-w-screen-xl">
   <div class="pt-5 text-center">
     @if (session("succes"))
     <p class="bg-logo p-2 text-white">{{ session("succes") }}</p>
