@@ -127,6 +127,36 @@
         @error("categories_id")
         <span class="text-red-500"> {{ $message }}</span> @enderror
       </div>
+      <div class="flex-shrink-0 flex-grow">
+        <div class="mb-5 text-center">
+          <p>Tailles</p>
+          @error("sizes") {{ $message }} @enderror
+        </div>
+        @foreach ($product->sizes as $s )
+        <div class="flex items-center justify-center gap-5">
+          <label for="{{ $s->sizes }}">{{ $s->sizes }}</label>
+          <input
+            class="my-3 border border-gray-950 p-2"
+            name="sizes[{{$s->sizes}}]"
+            type="checkbox"
+            checked
+            value="{{ $s->sizes }}"
+          />
+        </div>
+        @error("sizes.".$s)
+        <span class="text-red-500"> {{ $message }}</span>
+        @enderror @endforeach @foreach ($sizes as $s )
+        <div class="flex items-center justify-center gap-5">
+          <label for="{{ $s }}">{{ $s }}</label>
+          <input
+            class="my-3 border border-gray-950 p-2"
+            name="sizes[{{ $s }}]"
+            type="checkbox"
+            value="{{ $s }}"
+          />
+        </div>
+        @endforeach
+      </div>
       <div class="text-center">
         <button class="w-20 rounded-md border border-gray-900 p-2">
           Modifier

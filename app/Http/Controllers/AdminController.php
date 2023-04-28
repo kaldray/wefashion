@@ -63,14 +63,22 @@ class AdminController extends Controller
   /**
    * Show the form for editing a product.
    */
-  public function edit(Product $product): View
+  public function edit(Product $product)
   {
     $categories = Categories::all();
+    $allSizes = $this->sizes;
+
+    foreach ($product->sizes as $key => $s) {
+      $key = array_search($s->sizes, $allSizes);
+      unset($allSizes[$key]);
+    }
+
     return view("admin.edit", [
       "product" => $product,
       "categories" => $categories,
       "state" => $this->state,
       "published" => $this->published,
+      "sizes" => $allSizes,
     ]);
   }
 
@@ -79,7 +87,11 @@ class AdminController extends Controller
    */
   public function update(Product $product, ProductsRequest $request)
   {
-    $product->update($request->validated());
+    $product->update($request->except(["sizes"]));
+    $sizes = $request->safe()->only([$this->sizes, "sizes"])["sizes"];
+    foreach ($sizes as $s) {
+      $product->sizes($s)->saveMany([new Size(["sizes" => $s])]);
+    }
     return redirect()
       ->route("admin.edit", ["product" => $product->id])
       ->with("succes", "L'article a éte modifié avec succès");
