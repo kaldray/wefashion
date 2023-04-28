@@ -21,7 +21,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::resource("/solde", SoldeController::class);
-Route::resource("/login", LoginController::class);
+Route::resource("/login", LoginController::class)->middleware("guest");
 Route::resource("/admin", AdminController::class)
   ->middleware("auth")
   ->parameters(["admin" => "product"]);
