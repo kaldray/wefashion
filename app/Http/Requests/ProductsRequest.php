@@ -33,7 +33,7 @@ class ProductsRequest extends FormRequest
       "reference" => [
         "alpha_num",
         "max:16",
-        Rule::unique("products"),
+        Rule::unique("products", "reference")->ignore($this->product),
         "required",
       ],
       "categories_id" => [Rule::exists("categories", "id"), "required"],

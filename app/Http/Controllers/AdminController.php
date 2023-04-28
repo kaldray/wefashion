@@ -90,7 +90,7 @@ class AdminController extends Controller
     $product->update($request->except(["sizes"]));
     $sizes = $request->safe()->only([$this->sizes, "sizes"])["sizes"];
     foreach ($sizes as $s) {
-      $product->sizes($s)->saveMany([new Size(["sizes" => $s])]);
+      $product->sizes($s)->updateOrCreate(["sizes" => $s]);
     }
     return redirect()
       ->route("admin.edit", ["product" => $product->id])
