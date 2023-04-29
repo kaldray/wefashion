@@ -1,8 +1,13 @@
 @extends("base") @section("main")
+<div class="mx-auto w-2/4 pt-5 text-center">
+  @if (session("indisponible"))
+  <p class="bg-orange-500 p-2 text-white">{{ session("indisponible") }}</p>
+  @endif
+</div>
 <div
   class="mx-auto mt-10 grid w-4/5 grid-cols-12 place-content-center justify-items-center gap-5"
 >
-  @foreach ($products as $p )
+  @if ($products) @foreach ($products as $p )
   <div class="col-span-12 sm:col-span-4">
     <a href="{{route('home.product', $p->id ) }} ">
       <img
@@ -15,7 +20,7 @@
       <p class="text-center">{{ $p->price }} €</p>
     </a>
   </div>
-  @endforeach
+  @endforeach @endif
 </div>
 <div class="mt-10 flex justify-center">
   <p>Il y a {{$number}} produits au total.</p>

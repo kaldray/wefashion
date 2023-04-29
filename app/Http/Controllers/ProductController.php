@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Categories;
 use App\Models\Product;
 use Illuminate\Contracts\View\View;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 
 class ProductController extends Controller
@@ -45,9 +46,17 @@ class ProductController extends Controller
   /**
    * Display the specified resource.
    */
-  public function show(string $id)
+  public function show(string $id): View|RedirectResponse
   {
     $categoryId = Categories::where("name", $id)->first(["id"]);
+    if ($categoryId === null) {
+      return redirect()
+        ->route("home")
+        ->with(
+          "indisponible",
+          "Aucun produit n'est disponible pour la page demandé"
+        );
+    }
     $products = Product::where("categories_id", "=", $categoryId->id)
       ->orderBy("created_at", "desc")
       ->simplePaginate(6);
