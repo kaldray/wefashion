@@ -28,8 +28,8 @@ class ProductsRequest extends FormRequest
       "description" => ["string", "required"],
       "price" => ["decimal:0,2", "required"],
       "image" => ["image", "required"],
-      "published" => ["exists:products,published", "required"],
-      "state" => ["exists:products,state", "required"],
+      "published" => ["in:publié,non publié", "required"],
+      "state" => ["in:standard,solde", "required"],
       "reference" => [
         "alpha_num",
         "max:16",
