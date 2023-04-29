@@ -101,7 +101,8 @@
           class="w-full border border-gray-950 p-2"
           type="text"
           name="reference"
-          value="{{old('reference')}}"
+          readonly
+          value="{{old('reference', Str::random(16) )}}"
         />
         @error("reference")
         <span class="text-red-500"> {{ $message }}</span> @enderror
