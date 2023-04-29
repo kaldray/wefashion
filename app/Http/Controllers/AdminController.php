@@ -42,7 +42,7 @@ class AdminController extends Controller
   /**
    * Store a newly created resource in storage.
    */
-  public function store(ProductsRequest $request): RedirectResponse
+  public function store(ProductsRequest $request)
   {
     $product = Product::create(
       $this->createOrDeleteImage(new Product(), $request)
@@ -129,7 +129,8 @@ class AdminController extends Controller
     if ($product->image) {
       Storage::disk("public")->delete($product->image);
     }
-    $data["image"] = $image->store("products", "public");
+    $categoryPath = Categories::find($data["categories_id"])->name;
+    $data["image"] = $image->store("products/" . $categoryPath, "public");
     return $data;
   }
 
