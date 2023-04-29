@@ -17,7 +17,8 @@ class ProductController extends Controller
     /**
      * Sent the Product per group
      */
-    $products = Product::simplePaginate(6);
+    $products = Product::orderBy("created_at", "desc")->simplePaginate(6);
+
     /**
      * Get selection lenght
      */
@@ -47,12 +48,9 @@ class ProductController extends Controller
   public function show(string $id)
   {
     $categoryId = Categories::where("name", $id)->first(["id"]);
-
-    $products = Product::where(
-      "categories_id",
-      "=",
-      $categoryId->id
-    )->simplePaginate(6);
+    $products = Product::where("categories_id", "=", $categoryId->id)
+      ->orderBy("created_at", "desc")
+      ->simplePaginate(6);
 
     /**
      * Get selection lenght

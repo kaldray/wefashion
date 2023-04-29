@@ -13,7 +13,9 @@ class SoldeController extends Controller
    */
   public function index(): View
   {
-    $products = Product::where("state", "solde")->paginate(6);
+    $products = Product::where("state", "solde")
+      ->orderBy("created_at", "desc")
+      ->simplePaginate(6);
     /**
      * Get selection lenght
      */
