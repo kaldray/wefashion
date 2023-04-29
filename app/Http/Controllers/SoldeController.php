@@ -18,7 +18,7 @@ class SoldeController extends Controller
       ->orderBy("created_at", "desc")
       ->simplePaginate(6);
 
-    if ($products === null) {
+    if (count($products) === 0) {
       return redirect()
         ->route("home")
         ->with(
