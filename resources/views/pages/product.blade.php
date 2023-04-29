@@ -6,7 +6,7 @@
     <img
       src="{{ $product->imageUrl() }}"
       alt="{{$product->name}}"
-      class="w-full"
+      class="aspect-[3/4] w-full object-cover"
     />
     <div class="mt-5 flex justify-center gap-5">
       <p>{{ $product->name }}</p>

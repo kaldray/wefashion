@@ -42,7 +42,7 @@ class AdminController extends Controller
   /**
    * Store a newly created resource in storage.
    */
-  public function store(ProductsRequest $request)
+  public function store(ProductsRequest $request): RedirectResponse
   {
     $product = Product::create(
       $this->createOrDeleteImage(new Product(), $request)
@@ -67,7 +67,7 @@ class AdminController extends Controller
   /**
    * Show the form for editing a product.
    */
-  public function edit(Product $product)
+  public function edit(Product $product): View
   {
     $categories = Categories::all();
     $allSizes = $this->sizes;
@@ -89,8 +89,10 @@ class AdminController extends Controller
   /**
    * Update the specified resource in storage.
    */
-  public function update(Product $product, ProductsRequest $request)
-  {
+  public function update(
+    Product $product,
+    ProductsRequest $request
+  ): RedirectResponse {
     $product->update($this->createOrDeleteImage($product, $request));
     $sizes = $request->safe()->only([$this->sizes, "sizes"])["sizes"];
     foreach ($sizes as $s) {
@@ -99,6 +101,18 @@ class AdminController extends Controller
     return redirect()
       ->route("admin.edit", ["product" => $product->id])
       ->with("succes", "L'article a éte modifié avec succès");
+  }
+
+  /**
+   * Remove the specified resource from storage.
+   */
+  public function destroy(Product $product): RedirectResponse
+  {
+    $this->deleteImageWithProduct($product);
+    $product->delete();
+    return redirect()
+      ->route("admin.index")
+      ->with("succes", "L'article a éte supprimé avec succès");
   }
 
   /**
@@ -124,17 +138,5 @@ class AdminController extends Controller
     if ($product->image) {
       Storage::disk("public")->delete($product->image);
     }
-  }
-
-  /**
-   * Remove the specified resource from storage.
-   */
-  public function destroy(Product $product): RedirectResponse
-  {
-    $this->deleteImageWithProduct($product);
-    $product->delete();
-    return redirect()
-      ->route("admin.index")
-      ->with("succes", "L'article a éte supprimé avec succès");
   }
 }

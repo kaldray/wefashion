@@ -6,9 +6,9 @@
   <div class="col-span-12 sm:col-span-4">
     <a href="{{ route('home.product', $p->id ) }}">
       <img
-        class="w-full"
+        class="aspect-[3/4] w-full object-cover"
         loading="lazy"
-        src="{{ $p->image }}"
+        src="{{ $p->imageUrl() }}"
         alt="Description image"
       />
       <p class="text-center">{{ $p->name }}</p>
