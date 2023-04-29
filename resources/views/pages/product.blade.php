@@ -19,11 +19,9 @@
     class="col-span-12 mt-5 flex flex-col justify-center sm:col-start-7 sm:col-end-12 sm:w-full sm:max-w-sm sm:justify-start"
   >
     <select class="" name="size" id="size">
-      @if ($sizes->quantity != 0)
-      <option value="{{ $sizes->sizes }}">{{ $sizes->sizes }}</option>
-      @else
-      <p>Cet article est actuellement indisponible</p>
-      @endif
+      @foreach ($sizes as $s )
+      <option value="{{ $s->sizes }}">{{ $s->sizes }}</option>
+      @endforeach
     </select>
     <button class="mt-10 rounded-xl border border-black p-3">Acheter</button>
   </div>

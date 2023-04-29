@@ -1,3 +1,3 @@
-<section class="my-10 flex items-center justify-center">
+<section class="mx-auto my-10 w-full max-w-xs">
   {{ $products->links() }}
 </section>
