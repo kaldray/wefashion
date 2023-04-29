@@ -27,7 +27,7 @@ class ProductsRequest extends FormRequest
       "name" => ["string", "min:5", "max:100", "required"],
       "description" => ["string", "required"],
       "price" => ["decimal:0,2", "required"],
-      "image" => ["string", "required"],
+      "image" => ["image", "required"],
       "published" => ["exists:products,published", "required"],
       "state" => ["exists:products,state", "required"],
       "reference" => [

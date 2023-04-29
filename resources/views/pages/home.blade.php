@@ -13,7 +13,7 @@
       <img
         class="w-full"
         loading="lazy"
-        src="{{ $p->image }}"
+        src="{{ $p->imageUrl() }}"
         alt="Description image"
       />
       <p class="text-center">{{ $p->name }}</p>

@@ -8,6 +8,8 @@ use App\Models\Product;
 use App\Models\Size;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
+use Illuminate\Http\UploadedFile;
+use Illuminate\Support\Facades\Storage;
 
 class AdminController extends Controller
 {
@@ -42,10 +44,12 @@ class AdminController extends Controller
    */
   public function store(ProductsRequest $request)
   {
-    $post = Product::create($request->except(["sizes"]));
+    $product = Product::create(
+      $this->createOrDeleteImage(new Product(), $request)
+    );
     $sizes = $request->safe()->only([$this->sizes, "sizes"])["sizes"];
     foreach ($sizes as $s) {
-      $post->sizes($s)->saveMany([new Size(["sizes" => $s])]);
+      $product->sizes($s)->saveMany([new Size(["sizes" => $s])]);
     }
     return redirect()
       ->route("admin.index")
@@ -87,7 +91,7 @@ class AdminController extends Controller
    */
   public function update(Product $product, ProductsRequest $request)
   {
-    $product->update($request->except(["sizes"]));
+    $product->update($this->createOrDeleteImage($product, $request));
     $sizes = $request->safe()->only([$this->sizes, "sizes"])["sizes"];
     foreach ($sizes as $s) {
       $product->sizes($s)->updateOrCreate(["sizes" => $s]);
@@ -98,10 +102,36 @@ class AdminController extends Controller
   }
 
   /**
+   * Store image if empty
+   * Delete and Update if exist
+   */
+  private function createOrDeleteImage(
+    Product $product,
+    ProductsRequest $request
+  ): array {
+    $data = $request->except(["sizes"]);
+    /**@var UploadedFile $image */
+    $image = $request->validated("image");
+    if ($product->image) {
+      Storage::disk("public")->delete($product->image);
+    }
+    $data["image"] = $image->store("products", "public");
+    return $data;
+  }
+
+  private function deleteImageWithProduct(Product $product)
+  {
+    if ($product->image) {
+      Storage::disk("public")->delete($product->image);
+    }
+  }
+
+  /**
    * Remove the specified resource from storage.
    */
   public function destroy(Product $product): RedirectResponse
   {
+    $this->deleteImageWithProduct($product);
     $product->delete();
     return redirect()
       ->route("admin.index")

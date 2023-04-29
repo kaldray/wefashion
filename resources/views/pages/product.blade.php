@@ -3,7 +3,11 @@
   class="mx-auto my-10 grid w-4/5 grid-cols-12 place-content-center justify-items-center gap-5"
 >
   <div class="col-span-12 sm:col-span-6">
-    <img src="{{ $product->image }}" alt="{{$product->name}}" class="w-full" />
+    <img
+      src="{{ $product->imageUrl() }}"
+      alt="{{$product->name}}"
+      class="w-full"
+    />
     <div class="mt-5 flex justify-center gap-5">
       <p>{{ $product->name }}</p>
       <p>{{ $product->price }} €</p>

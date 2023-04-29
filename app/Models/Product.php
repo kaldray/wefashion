@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Factories\Factory;
 use Database\Factories\ProductFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Support\Facades\Storage;
 
 class Product extends Model
 {
@@ -42,5 +43,10 @@ class Product extends Model
   public function sizes(): HasMany
   {
     return $this->hasMany(Size::class);
+  }
+
+  public function imageUrl(): string
+  {
+    return Storage::disk("public")->url($this->image);
   }
 }

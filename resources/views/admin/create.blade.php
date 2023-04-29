@@ -11,8 +11,20 @@
       method="post"
       class="flex w-4/5 max-w-md flex-col gap-5"
       action="{{ route('admin.store') }}"
+      enctype="multipart/form-data"
     >
       @csrf
+      <div class="flex-shrink-0 flex-grow">
+        <div class="mb-5 text-center">
+          <label for="image">Image</label>
+        </div>
+        <input
+          class="w-full border border-gray-950 p-2"
+          type="file"
+          name="image"
+        />
+        @error('image') {{ $message }} @enderror
+      </div>
       <div class="flex-shrink-0 flex-grow">
         <div class="mb-5 text-center">
           <label for="name">Name</label>
@@ -54,19 +66,7 @@
         @error("price")
         <span class="text-red-500"> {{ $message }}</span> @enderror
       </div>
-      <div class="flex-shrink-0 flex-grow">
-        <div class="mb-5 text-center">
-          <label for="image">Image</label>
-        </div>
-        <input
-          class="w-full border border-gray-950 p-2"
-          type="text"
-          name="image"
-          value="{{old('image')}}"
-        />
-        @error("image")
-        <span class="text-red-500"> {{ $message }}</span> @enderror
-      </div>
+
       <div class="flex-shrink-0 flex-grow">
         <div class="mb-5 text-center">
           <label for="published">Status</label>
@@ -127,13 +127,15 @@
           @error("sizes") {{ $message }} @enderror
         </div>
         @foreach ($sizes as $s )
-        <label for="{{ $s }}">{{ $s }}</label>
-        <input
-          class="my-3 w-full border border-gray-950 p-2"
-          name="sizes[{{$s}}]"
-          type="checkbox"
-          value="{{ $s }}"
-        />
+        <div class="flex items-center justify-center gap-5">
+          <label for="{{ $s }}">{{ $s }}</label>
+          <input
+            class="my-3 border border-gray-950 p-2"
+            name="sizes[{{$s}}]"
+            type="checkbox"
+            value="{{ $s }}"
+          />
+        </div>
         @error("sizes.".$s)
         <span class="text-red-500"> {{ $message }}</span> @enderror @endforeach
       </div>

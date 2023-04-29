@@ -11,8 +11,20 @@
       method="post"
       class="flex w-4/5 max-w-md flex-col gap-5"
       action="{{ route('admin.update',['product'=> $product] ) }}"
+      enctype="multipart/form-data"
     >
       @csrf @method("PATCH")
+      <div class="flex-shrink-0 flex-grow">
+        <div class="mb-5 text-center">
+          <label for="image">Image</label>
+        </div>
+        <input
+          class="w-full border border-gray-950 p-2"
+          type="file"
+          name="image"
+        />
+        @error('image') {{ $message }} @enderror
+      </div>
       <div class="flex-shrink-0 flex-grow">
         <div class="mb-5 text-center">
           <label for="name">Name</label>
@@ -52,19 +64,6 @@
           value="{{ old('price', $product->price)}}"
         />
         @error("price")
-        <span class="text-red-500"> {{ $message }}</span> @enderror
-      </div>
-      <div class="flex-shrink-0 flex-grow">
-        <div class="mb-5 text-center">
-          <label for="image">Image</label>
-        </div>
-        <input
-          class="w-full border border-gray-950 p-2"
-          type="text"
-          name="image"
-          value="{{old('image',$product->image)}}"
-        />
-        @error("image")
         <span class="text-red-500"> {{ $message }}</span> @enderror
       </div>
       <div class="flex-shrink-0 flex-grow">
