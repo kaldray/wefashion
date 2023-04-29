@@ -1,6 +1,6 @@
 @extends("base") @section("main")
 
-<div class="mx-auto mt-10 w-5/6 max-w-screen-xl">
+<div class="mx-auto mt-10 min-h-screen w-5/6 max-w-screen-xl">
   <div class="mx-auto w-2/4 py-5 text-center">
     @if (session("succes"))
     <p class="bg-logo p-2 text-white">{{ session("succes") }}</p>
@@ -13,6 +13,9 @@
       >Nouvelle Catégories</a
     >
   </div>
+  @if (count($categories) === 0)
+  <p class="mt-10 text-center">Aucune catégorie</p>
+  @else
   <div class="mb-10 mt-10 flex flex-col pb-10">
     <div class="overflow-x-auto sm:-mx-6 lg:-mx-8">
       <div class="inline-block min-w-full py-2 sm:px-6 lg:px-8">
@@ -71,6 +74,7 @@
       </div>
     </div>
   </div>
+  @endif
 </div>
 <section class="mx-auto my-10 w-full max-w-xs">
   {{ $categories->links() }}
