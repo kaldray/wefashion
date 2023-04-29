@@ -21,7 +21,8 @@ class ProductFactory extends Factory
    */
   public function definition(): array
   {
-    $files = Storage::disk("public")->allFiles("products");
+    $cat = Categories::all()->random();
+    $files = Storage::disk("public")->allFiles("products/" . $cat->name);
     $randomFiles = $files[rand(0, count($files) - 1)];
     return [
       "name" => fake()->name(),
@@ -33,7 +34,7 @@ class ProductFactory extends Factory
       "reference" => fake()
         ->unique()
         ->regexify("[A-Za-z0-9]{16}"),
-      "categories_id" => Categories::all()->random()->id,
+      "categories_id" => $cat->id,
     ];
   }
 }
