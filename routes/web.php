@@ -20,12 +20,17 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::resource("/solde", SoldeController::class);
-Route::resource("/login", LoginController::class)->middleware("guest");
+Route::resource("/solde", SoldeController::class)->only(["index"]);
+Route::resource("/login", LoginController::class)
+  ->middleware("guest")
+  ->only(["index", "store"]);
 Route::resource("/admin", AdminController::class)
   ->middleware("auth")
-  ->parameters(["admin" => "product"]);
-Route::resource("/categories", CategoriesController::class)->middleware("auth");
+  ->parameters(["admin" => "product"])
+  ->except(["show"]);
+Route::resource("/categories", CategoriesController::class)
+  ->middleware("auth")
+  ->except(["show"]);
 Route::get("/logout", [LogOutController::class, "index"])->name("auth.logout");
 Route::controller(ProductController::class)->group(function () {
   Route::get("/", "index")->name("home");
