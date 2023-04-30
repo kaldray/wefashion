@@ -45,6 +45,7 @@ Une fois les dépendances installer :
 
 ```
 php artisan migrate:fresh --seed
+php artisan storage:link
 ```
 
 ### 1.3.3. Démarrer le serveur de développement
@@ -55,5 +56,6 @@ npm run dev
 ```
 
 ## 1.4. Usage
+
 le compte administrateur est : admin@admin.com
 le mot de passe est : admin
