@@ -17,7 +17,7 @@
   @endif
 </div>
 <div
-  class="mx-auto mt-10 grid min-h-screen w-4/5 grid-cols-12 place-content-center justify-items-center gap-5"
+  class="mx-auto mt-10 grid min-h-screen w-4/5 grid-cols-12 justify-items-center gap-5"
 >
   @if ($products) @foreach ($products as $p )
   <div class="col-span-12 sm:col-span-4">
