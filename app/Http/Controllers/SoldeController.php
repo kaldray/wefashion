@@ -15,6 +15,7 @@ class SoldeController extends Controller
   public function index(): View|RedirectResponse
   {
     $products = Product::where("state", "solde")
+      ->where("published", "publié")
       ->orderBy("created_at", "desc")
       ->simplePaginate(6);
 
@@ -29,7 +30,9 @@ class SoldeController extends Controller
     /**
      * Get selection lenght
      */
-    $number = Product::where("state", "solde")->count();
+    $number = Product::where("state", "solde")
+      ->where("published", "publié")
+      ->count();
     return view("pages.solde", ["products" => $products, "number" => $number]);
   }
 }

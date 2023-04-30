@@ -18,12 +18,14 @@ class ProductController extends Controller
     /**
      * Sent the Product per group
      */
-    $products = Product::orderBy("created_at", "desc")->simplePaginate(6);
+    $products = Product::where("published", "publié")
+      ->orderBy("created_at", "desc")
+      ->simplePaginate(6);
 
     /**
      * Get selection lenght
      */
-    $number = Product::count();
+    $number = Product::where("published", "publié")->count();
     return view("pages.home", ["products" => $products, "number" => $number]);
   }
 
@@ -42,6 +44,7 @@ class ProductController extends Controller
         );
     }
     $products = Product::where("categories_id", "=", $categoryId->id)
+      ->where("published", "publié")
       ->orderBy("created_at", "desc")
       ->simplePaginate(6);
 
@@ -50,6 +53,7 @@ class ProductController extends Controller
      */
     $number = Product::query()
       ->where("categories_id", "=", $categoryId->id)
+      ->where("published", "publié")
       ->count();
 
     return view("pages.categories", [
