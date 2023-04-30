@@ -89,6 +89,6 @@
   </div>
   @endif
 </div>
-<div>@include("components.pagination")</div>
+<div>@include("components.pagination",["pagination"=>$products])</div>
 @endsection
 

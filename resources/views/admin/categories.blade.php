@@ -1,7 +1,7 @@
 @extends("base") @section("main")
 
 <div class="mx-auto mt-10 min-h-screen w-5/6 max-w-screen-xl">
-@include("components.succes")
+  @include("components.succes")
   <div class="mt-3 text-left">
     <a
       class="rounded-md bg-black p-2 text-white"
@@ -72,8 +72,5 @@
   </div>
   @endif
 </div>
-<section class="mx-auto my-10 w-full max-w-xs">
-  {{ $categories->links() }}
-</section>
-@endsection
+@include("components.pagination",["pagination"=>$categories]) @endsection
 

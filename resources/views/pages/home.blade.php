@@ -36,4 +36,4 @@
   </div>
   @endforeach @endif
 </div>
-@endif @include("components.pagination") @endsection
+@endif @include("components.pagination",["pagination"=>$products]) @endsection

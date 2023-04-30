@@ -25,4 +25,4 @@
   @endforeach
 </div>
 
-@include("components.pagination") @endsection
+@include("components.pagination",["pagination"=>$products]) @endsection
