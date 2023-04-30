@@ -57,14 +57,6 @@ class AdminController extends Controller
   }
 
   /**
-   * Display the specified resource.
-   */
-  public function show(string $id)
-  {
-    //
-  }
-
-  /**
    * Show the form for editing a product.
    */
   public function edit(Product $product): View
@@ -72,7 +64,7 @@ class AdminController extends Controller
     $categories = Categories::all();
     $allSizes = $this->sizes;
 
-    foreach ($product->sizes as $key => $s) {
+    foreach ($product->sizes as $s) {
       $key = array_search($s->sizes, $allSizes);
       unset($allSizes[$key]);
     }
@@ -134,6 +126,9 @@ class AdminController extends Controller
     return $data;
   }
 
+  /**
+   * Delete image before the product
+   */
   private function deleteImageWithProduct(Product $product)
   {
     if ($product->image) {

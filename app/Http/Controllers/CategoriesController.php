@@ -6,7 +6,6 @@ use App\Http\Requests\CategoriesRequest;
 use App\Models\Categories;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
-use Illuminate\Http\Request;
 
 class CategoriesController extends Controller
 {
@@ -30,20 +29,12 @@ class CategoriesController extends Controller
   /**
    * Store a newly created resource in storage.
    */
-  public function store(CategoriesRequest $request)
+  public function store(CategoriesRequest $request): RedirectResponse
   {
     Categories::create($request->validated());
     return redirect()
       ->route("categories.index")
       ->with("succes", "La catégorie éte ajouter avec succès");
-  }
-
-  /**
-   * Display the specified resource.
-   */
-  public function show(string $id)
-  {
-    //
   }
 
   /**

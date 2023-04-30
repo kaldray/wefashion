@@ -19,17 +19,9 @@ class LoginController extends Controller
   }
 
   /**
-   * Show the form for creating a new resource.
-   */
-  public function create()
-  {
-    //
-  }
-
-  /**
    * Store a newly created resource in storage.
    */
-  public function store(LoginRequest $request)
+  public function store(LoginRequest $request): RedirectResponse
   {
     $credentials = $request->validated();
     if (Auth::attempt($credentials)) {
@@ -37,37 +29,5 @@ class LoginController extends Controller
       return redirect()->intended(route("admin.index"));
     }
     return to_route("login.index");
-  }
-
-  /**
-   * Display the specified resource.
-   */
-  public function show(string $id)
-  {
-    //
-  }
-
-  /**
-   * Show the form for editing the specified resource.
-   */
-  public function edit(string $id)
-  {
-    //
-  }
-
-  /**
-   * Update the specified resource in storage.
-   */
-  public function update(Request $request, string $id)
-  {
-    //
-  }
-
-  /**
-   * Remove the specified resource from storage.
-   */
-  public function destroy(string $id)
-  {
-    //
   }
 }

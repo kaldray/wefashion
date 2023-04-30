@@ -28,22 +28,6 @@ class ProductController extends Controller
   }
 
   /**
-   * Show the form for creating a new resource.
-   */
-  public function create()
-  {
-    //
-  }
-
-  /**
-   * Store a newly created resource in storage.
-   */
-  public function store(Request $request)
-  {
-    //
-  }
-
-  /**
    * Display the specified resource.
    */
   public function show(string $id): View|RedirectResponse
@@ -54,7 +38,7 @@ class ProductController extends Controller
         ->route("home")
         ->with(
           "indisponible",
-          "Aucun produit n'est disponible pour la page demandé"
+          "Aucun produit n'est disponible pour la page demandée"
         );
     }
     $products = Product::where("categories_id", "=", $categoryId->id)
@@ -72,29 +56,5 @@ class ProductController extends Controller
       "products" => $products,
       "number" => $number,
     ]);
-  }
-
-  /**
-   * Show the form for editing the specified resource.
-   */
-  public function edit(string $id)
-  {
-    //
-  }
-
-  /**
-   * Update the specified resource in storage.
-   */
-  public function update(Request $request, string $id)
-  {
-    //
-  }
-
-  /**
-   * Remove the specified resource from storage.
-   */
-  public function destroy(string $id)
-  {
-    //
   }
 }

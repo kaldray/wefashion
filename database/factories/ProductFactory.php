@@ -22,6 +22,7 @@ class ProductFactory extends Factory
   public function definition(): array
   {
     $cat = Categories::all()->random();
+    /**Get folder that match category name */
     $files = Storage::disk("public")->allFiles("products/" . $cat->name);
     $randomFiles = $files[rand(0, count($files) - 1)];
     return [

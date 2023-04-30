@@ -17,6 +17,8 @@ class Product extends Model
    *
    * @var array
    */
+
+  /**Allow mass assignment */
   protected $fillable = [
     "name",
     "description",
@@ -45,6 +47,7 @@ class Product extends Model
     return $this->hasMany(Size::class);
   }
 
+  /**Shorthand to get the right path for the image */
   public function imageUrl(): string
   {
     return Storage::disk("public")->url($this->image);
