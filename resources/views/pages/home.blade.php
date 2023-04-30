@@ -9,6 +9,13 @@
   <p>Aucun produits</p>
 </div>
 @else
+<div class="mx-auto mt-10 w-4/5">
+  @if ($number === 1)
+  <p class="text-right">Il y a {{$number}} produit au total.</p>
+  @else
+  <p class="text-right">Il y a {{$number}} produits au total.</p>
+  @endif
+</div>
 <div
   class="mx-auto mt-10 grid min-h-screen w-4/5 grid-cols-12 place-content-center justify-items-center gap-5"
 >
@@ -28,8 +35,5 @@
     </a>
   </div>
   @endforeach @endif
-</div>
-<div class="mt-10 flex justify-center">
-  <p>Il y a {{$number}} produits au total.</p>
 </div>
 @endif @include("components.pagination") @endsection
