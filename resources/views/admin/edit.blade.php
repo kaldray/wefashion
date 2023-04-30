@@ -105,6 +105,7 @@
           class="w-full border border-gray-950 p-2"
           type="text"
           name="reference"
+          readonly
           value="{{old('reference', $product->reference)}}"
         />
         @error("reference")
