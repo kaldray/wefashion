@@ -2,9 +2,6 @@
 <div class="mx-auto mt-10 min-h-screen w-4/5">
   <div class="my-10 text-center">
     <h1 class="text-lg">Ajout d'une catégorie</h1>
-    @if (session("succes"))
-    <p class="bg-logo p-2 text-white">{{ session("succes") }}</p>
-    @endif
   </div>
   <div class="flex justify-center">
     <form

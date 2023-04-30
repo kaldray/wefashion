@@ -54,7 +54,7 @@ class CategoriesController extends Controller
   ): RedirectResponse {
     $category->update($request->validated());
     return redirect()
-      ->route("categories.edit", ["category" => $category->id])
+      ->route("categories.index", ["category" => $category->id])
       ->with("succes", "La catégorie a éte modifié avec succès");
   }
 

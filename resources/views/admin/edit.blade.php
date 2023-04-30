@@ -2,9 +2,6 @@
 <div class="mx-auto mt-10 w-4/5">
   <div class="mx-auto w-2/4 py-5 text-center">
     <h1 class="text-lg">Modification d'un produit</h1>
-    @if (session("succes"))
-    <p class="bg-logo p-2 text-white">{{ session("succes") }}</p>
-    @endif
   </div>
   <div class="flex justify-center">
     <form
