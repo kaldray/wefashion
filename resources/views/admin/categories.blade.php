@@ -20,7 +20,7 @@
             <thead class="border-b font-medium dark:border-neutral-500">
               <tr>
                 <th class="border border-slate-600 p-4">Id</th>
-                <th class="border border-slate-600 p-4">Nom de la catégoris</th>
+                <th class="border border-slate-600 p-4">Nom de la catégorie</th>
                 <th class="border border-slate-600 p-4">Editer</th>
                 <th class="border border-slate-600 p-4">Supprimer</th>
               </tr>
