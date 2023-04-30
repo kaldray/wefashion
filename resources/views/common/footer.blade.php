@@ -6,7 +6,7 @@
       <h5>Informations</h5>
       <a href="">Mentions légales</a>
       <a href="">Presse</a>
-      <a href="">Fabricaation</a>
+      <a href="">Fabrication</a>
     </div>
     <div class="flex flex-col gap-3 text-center">
       <h5>Services client</h5>
