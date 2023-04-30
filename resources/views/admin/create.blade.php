@@ -121,7 +121,7 @@
       </div>
       <div class="flex-shrink-0 flex-grow">
         <div class="mb-5 text-center">
-          <p>Tailles</p>
+          <p>Tailles disponibles</p>
           @error("sizes") {{ $message }} @enderror
         </div>
         @foreach ($sizes as $s )

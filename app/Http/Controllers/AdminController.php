@@ -47,7 +47,12 @@ class AdminController extends Controller
     $product = Product::create(
       $this->createOrDeleteImage(new Product(), $request)
     );
-    $sizes = $request->safe()->only([$this->sizes, "sizes"])["sizes"];
+    $sizes = $request->safe()->only([$this->sizes, "sizes"]);
+    /**
+     * Check if sizes is empty
+     */
+    $sizes = $this->checkIfKeysExists($sizes);
+
     foreach ($sizes as $s) {
       $product->sizes($s)->saveMany([new Size(["sizes" => $s])]);
     }
@@ -86,12 +91,20 @@ class AdminController extends Controller
     ProductsRequest $request
   ): RedirectResponse {
     $product->update($this->createOrDeleteImage($product, $request));
-    $sizes = $request->safe()->only([$this->sizes, "sizes"])["sizes"];
-    foreach ($sizes as $s) {
-      $product->sizes($s)->updateOrCreate(["sizes" => $s]);
+    $sizes = $request->safe()->only([$this->sizes, "sizes"]);
+
+    $sizes = $this->checkIfKeysExists($sizes);
+
+    foreach ($this->sizes as $value) {
+      if (array_key_exists($value, $sizes)) {
+        $product->sizes($value)->updateOrCreate(["sizes" => $value]);
+      } else {
+        Size::where("product_id", $product->id)->delete();
+      }
     }
+
     return redirect()
-      ->route("admin.edit", ["product" => $product->id])
+      ->route("admin.index", ["product" => $product->id])
       ->with("succes", "L'article a été modifié avec succès");
   }
 
@@ -134,5 +147,13 @@ class AdminController extends Controller
     if ($product->image) {
       Storage::disk("public")->delete($product->image);
     }
+  }
+
+  private function checkIfKeysExists($sizes): array
+  {
+    if (array_key_exists("sizes", $sizes)) {
+      $sizes = $sizes["sizes"];
+    }
+    return $sizes;
   }
 }

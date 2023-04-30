@@ -37,7 +37,7 @@ class ProductsRequest extends FormRequest
         "required",
       ],
       "categories_id" => [Rule::exists("categories", "id"), "required"],
-      "sizes" => ["required", "array", "min:1"],
+      "sizes" => ["array"],
       "sizes.XS" => [
         Rule::unique("sizes", "product_id")->where(function ($query) {
           $query->where("product_id", $this->request->get("product_id"));
