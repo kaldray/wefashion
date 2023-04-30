@@ -34,7 +34,7 @@ class CategoriesController extends Controller
     Categories::create($request->validated());
     return redirect()
       ->route("categories.index")
-      ->with("succes", "La catégorie éte ajouter avec succès");
+      ->with("succes", "La catégorie a été ajouter avec succès");
   }
 
   /**
@@ -55,7 +55,7 @@ class CategoriesController extends Controller
     $category->update($request->validated());
     return redirect()
       ->route("categories.index", ["category" => $category->id])
-      ->with("succes", "La catégorie a éte modifié avec succès");
+      ->with("succes", "La catégorie a été modifié avec succès");
   }
 
   /**
@@ -66,6 +66,6 @@ class CategoriesController extends Controller
     $category->delete();
     return redirect()
       ->route("categories.index")
-      ->with("succes", "La catégorie a éte supprimé avec succès");
+      ->with("succes", "La catégorie a été supprimé avec succès");
   }
 }

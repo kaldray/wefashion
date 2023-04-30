@@ -23,7 +23,7 @@ class SoldeController extends Controller
         ->route("home")
         ->with(
           "indisponible",
-          "Aucun produit n'est disponible pour la page demandé"
+          "Aucun produit n'est disponible pour la page demandée"
         );
     }
     /**

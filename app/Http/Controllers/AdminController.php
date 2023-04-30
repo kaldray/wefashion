@@ -53,7 +53,7 @@ class AdminController extends Controller
     }
     return redirect()
       ->route("admin.index")
-      ->with("succes", "L'article a éte crée avec succès");
+      ->with("succes", "L'article a été crée avec succès");
   }
 
   /**
@@ -92,7 +92,7 @@ class AdminController extends Controller
     }
     return redirect()
       ->route("admin.edit", ["product" => $product->id])
-      ->with("succes", "L'article a éte modifié avec succès");
+      ->with("succes", "L'article a été modifié avec succès");
   }
 
   /**
@@ -104,7 +104,7 @@ class AdminController extends Controller
     $product->delete();
     return redirect()
       ->route("admin.index")
-      ->with("succes", "L'article a éte supprimé avec succès");
+      ->with("succes", "L'article a été supprimé avec succès");
   }
 
   /**
